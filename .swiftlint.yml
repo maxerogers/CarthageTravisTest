@@ -1,0 +1,5 @@
+excluded: # paths to ignore during linting.
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/EcludedFile.swift

@@ -1,0 +1,4 @@
+github "AFNetworking/AFNetworking"
+github "SwiftyJSON/SwiftyJSON"
+github "Quick/Quick"
+github "Quick/Nimble"
