@@ -1,19 +1,23 @@
-language: swift
+language: objective-c
 osx_image: xcode7.2
-#xcode_project: <CarthageText>
 xcode_workspace: CarthageText.xcworkspace
 xcode_scheme: CarthageText
 xcode_sdk: iphonesimulator9.2
 env:
   global:
-    - FRAMEWORK_NAME=CarthageText
+  - FRAMEWORK_NAME=CarthageText
 before_install:
-  - brew update
-  - brew install carthage
+- brew update
+- brew install carthage
 before_script:
-  # bootstrap the dependencies for the project
-  # you can remove if you don't have dependencies
-  - carthage bootstrap
+- carthage bootstrap
 before_deploy:
-  - carthage build --no-skip-current
-  - carthage archive $FRAMEWORK_NAME
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: UXQEhFSehy1056LiqLp9FI4xhi8tpgveKlf2HS9lod2ZkeDdhGwDRElWJAKsrtW/bt51dzfUKb1PDw1+MP3y80j8Qb6KkXra0wd4RaaqM8E1xZfFOZHLWbOzWiEp3wqI6GTGIdy17o1ovMhVdxthJy7hk0u7ZGupe3D4JO+PDqvXLVO6vHvkEP4pfZgFzZO6IMQm8hsi8mUMwOmUMpIxVw5aLxz30yxs1yje1p0PrI2izdKzDgg61VtP+z1ekLMDOGB9DIMfEnIjalHxvFAUC0L4RyOUWE46lzgt71e1JxBFmy+5DFoQT1uibOjp6K9DNAAgxMh2pPqiO4F2KilSPm7HiRul13utqVlBeX8CkkkJnymkEGGwwN5sD/W5JJWya0fB00owcEg1C6EBdmVaw6ExkIOejyQSNz+yV2utLxk3iRQmBeeHpLj74rj7KyUuPuNRsdVQoncaSWsnymLnxK4Z7BtxA4rSD54mvrnS5l4t/mD0Q0/KmAIJ3PTugdgknmMUPA4uk4zvSnrlI35nwAyxuH4tIGbBiQGEy3DOoMq6MXxSt8Bax4EwZrqDWOFR+tWqR3Yg39jgU/rknFvq2rBUQvx9EWip8jB+9sMes/D1o9BU1aoMHj/E9WfIDflnHEl1MJ+RVM+Ds3k7I3aBpoIoHHp7zPo5qgQk0GrAgUc=
+  file: CarthageTest.framework.zip
+  on:
+    repo: maxerogers/CarthageTravisTest
